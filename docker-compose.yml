@@ -1,0 +1,37 @@
+version: '3'
+services:
+  proxy:
+    image: nginx:alpine
+    ports:
+      - 8080:8080
+    volumes:
+      - ./default.conf.template:/etc/nginx/templates/default.conf.template
+    networks:
+      common:
+        ipv4_address: 10.5.0.2
+  tile38:
+    image: tile38/tile38
+    ports:
+      - 9851:9851
+    depends_on: 
+      - proxy
+    networks:
+      common:
+        ipv4_address: 10.5.0.3
+  moving-points-server:
+     build: moving-point-server/.
+     volumes:
+       - ./moving-point-server/server.sh:/server.sh
+     environment:
+       - PROXY_IP=10.5.0.2
+     networks:
+       common:
+         ipv4_address: 10.5.0.4
+
+networks:
+   common:
+      driver: bridge
+      ipam:
+         config:
+         - subnet: 10.5.0.0/16
+
