@@ -39,7 +39,7 @@ export const Map = () => {
 }, [])
 
 
-    return <MapContainer style={{width: '100vw', height: '100vh'}} center={LodzCoordinates} zoom={12} scrollWheelZoom={false}>
+    return <MapContainer style={{width: '100vw', height: '100vh'}} center={LodzCoordinates} zoom={18} scrollWheelZoom={false}>
         <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
