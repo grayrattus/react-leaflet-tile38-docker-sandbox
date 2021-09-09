@@ -13,6 +13,7 @@ This starts Nginx CORS proxy, Tile38 server and simple Bash server that changes 
 
 ```
 cd front/
+npm i
 npm run start
 ```
 This starts web application.
